@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import AppDownload from '../components/AppDownload/AppDownload';
+import AppDownload from '../../../components/AppDownload/AppDownload';
 
 describe('AppDownload', () => {
     it('renders without crashing', () => {
