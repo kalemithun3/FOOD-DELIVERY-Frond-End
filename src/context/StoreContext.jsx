@@ -28,15 +28,18 @@ const StoreContextProvider = (props) => {
   };
 
   const getTotalCartAmount = () => {
+    if (!food_list.length || !cartItems) return 0;
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = food_list.find((food) => food._id === item);
-        totalAmount += cartItems[item] * itemInfo.price;
+        const itemInfo = food_list.find((food) => food._id === item);
+        if (itemInfo) {
+          totalAmount += cartItems[item] * itemInfo.price;
+        }
       }
     }
     return totalAmount;
-  }
+  };
 
   const fetchFoodList = async () => {
     const response = await axios.get(url + "/api/food/list");
